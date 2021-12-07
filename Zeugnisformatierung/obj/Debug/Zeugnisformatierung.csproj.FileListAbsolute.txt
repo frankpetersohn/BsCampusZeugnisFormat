@@ -1,0 +1,10 @@
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\bin\Debug\Zeugnisformatierung.exe.config
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\bin\Debug\Zeugnisformatierung.exe
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\bin\Debug\Zeugnisformatierung.pdb
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.csprojResolveAssemblyReference.cache
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.Form1.resources
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.Properties.Resources.resources
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.csproj.GenerateResource.Cache
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.exe
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.pdb
+c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\bin\Debug\PdfSharp.dll
