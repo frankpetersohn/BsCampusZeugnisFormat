@@ -89,7 +89,10 @@ namespace Zeugnisformatierung
 
         private void button3_Click(object sender, EventArgs e)
         {
-            XPdfForm f = XPdfForm.FromFile(textBox1.Text);
+
+
+            string sourcefile = textBox1.Text;
+            XPdfForm f = XPdfForm.FromFile(sourcefile);
             progressBar1.Maximum = f.PageCount + 1;
             progressBar1.Value = 0;
             double pageHeight = f.Size.Height;
@@ -103,40 +106,98 @@ namespace Zeugnisformatierung
                     continue;
                 }
 
-                f.PageIndex = i;
+                
+
                 PdfPage p = output.AddPage();
-                p.Width = pageWidth;//f.PixelWidth;
+                if (checkBox3.Checked)
+                {
+                    p.Width = pageWidth*2;//f.PixelWidth;
+                }
+                else
+                {
+                    p.Width = pageWidth;//f.PixelWidth;
+                }
+            
                 p.Height = pageHeight;// f.PixelHeight;
 
                 //  if (output.PageCount % 2 == 0) p.TrimMargins.Top = Convert.ToInt16(textBox2.Text);
 
-                XGraphics g = XGraphics.FromPdfPage(p); g.DrawImage(f, 0, 0);
+                f.PageIndex = i;
 
-                // if (i != 0) p.MediaBox = new PdfRectangle(new XRect(5, 5, p.Width, p.Height));
-
-
-
-                if (output.PageCount % 2 == 0 && checkBox2.Checked)
+                XGraphics g = XGraphics.FromPdfPage(p);
+                g.DrawImage(f, 0, 0);
+                if (checkBox3.Checked && f.PageCount > i+1)
                 {
-                    
-                        p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
-                    
-                }              
-                else
-                {
+                    f.PageIndex = i + 1;
+                    g.DrawImage(f, p.Width / 2, Convert.ToDouble(textBox2.Text));
+                    i++;
                     p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
                 }
+                else
+                {
 
+                    if (output.PageCount % 2 == 0 && checkBox2.Checked)
+                    {
+
+                        p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
+
+                    }
+                    else
+                    {
+                        p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
+                    }
+                }
                 // Cut if it is not a cover
                 progressBar1.Value = i;
             }
-            const string filename = "tempfile.pdf";
+
+           string newfilename = Path.GetFileName(sourcefile);
+       
+
+            string filename = textBox3.Text + "//" + newfilename ;
+
             try { 
             output.Save(filename);
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+               textBox3.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            fileSystemWatcher1.Path = textBox3.Text;
+            updateFileList();
+
+
+        }
+        private void updateFileList()
+        {
+            string[] fileEntries = Directory.GetFiles(fileSystemWatcher1.Path);
+            listBox1.Items.Clear();
+            foreach (string s in fileEntries)
+            {
+                listBox1.Items.Add(s);
+            }
+        }
+
+        private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
+        {
+            updateFileList();
+           
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(listBox1.SelectedItem.ToString());
         }
     }
 }

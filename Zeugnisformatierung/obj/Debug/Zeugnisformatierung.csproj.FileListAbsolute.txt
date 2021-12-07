@@ -8,3 +8,13 @@ c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeug
 c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.exe
 c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.pdb
 c:\users\bscampus\documents\visual studio 2015\Projects\Zeugnisformatierung\Zeugnisformatierung\bin\Debug\PdfSharp.dll
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\bin\Debug\Zeugnisformatierung.exe.config
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\bin\Debug\Zeugnisformatierung.exe
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\bin\Debug\Zeugnisformatierung.pdb
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\bin\Debug\PdfSharp.dll
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.csprojResolveAssemblyReference.cache
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.Form1.resources
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.Properties.Resources.resources
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.csproj.GenerateResource.Cache
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.exe
+C:\Users\bscampus\Source\Repos\BsCampusZeugnisFormat\Zeugnisformatierung\obj\Debug\Zeugnisformatierung.pdb
