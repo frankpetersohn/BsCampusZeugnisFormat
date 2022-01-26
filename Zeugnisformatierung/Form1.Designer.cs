@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,30 +47,36 @@
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "PDF|*pdf";
             this.openFileDialog1.Multiselect = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(505, 19);
+            this.button1.Location = new System.Drawing.Point(12, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Zeugnisdrucköffnen";
+            this.button1.Text = "Zeugnisdruck öffnen";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 138);
+            this.textBox1.Location = new System.Drawing.Point(12, 48);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(658, 20);
+            this.textBox1.Size = new System.Drawing.Size(520, 20);
             this.textBox1.TabIndex = 1;
             // 
             // checkBox1
@@ -77,7 +84,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(21, 177);
+            this.checkBox1.Location = new System.Drawing.Point(12, 221);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(125, 17);
             this.checkBox1.TabIndex = 3;
@@ -86,16 +93,16 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(346, 371);
+            this.progressBar1.Location = new System.Drawing.Point(557, 223);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(374, 23);
+            this.progressBar1.Size = new System.Drawing.Size(520, 23);
             this.progressBar1.TabIndex = 4;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(694, 418);
+            this.button3.Location = new System.Drawing.Point(362, 263);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 23);
+            this.button3.Size = new System.Drawing.Size(170, 46);
             this.button3.TabIndex = 5;
             this.button3.Text = "Starte Konvertierung";
             this.button3.UseVisualStyleBackColor = true;
@@ -105,7 +112,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Location = new System.Drawing.Point(21, 200);
+            this.groupBox1.Location = new System.Drawing.Point(12, 244);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(196, 70);
             this.groupBox1.TabIndex = 6;
@@ -119,6 +126,7 @@
             this.textBox2.Size = new System.Drawing.Size(47, 20);
             this.textBox2.TabIndex = 7;
             this.textBox2.Text = "50";
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // checkBox2
             // 
@@ -134,17 +142,17 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 48);
+            this.richTextBox1.Location = new System.Drawing.Point(12, 81);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(658, 84);
+            this.richTextBox1.Size = new System.Drawing.Size(520, 134);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(730, 19);
+            this.button4.Location = new System.Drawing.Point(557, 15);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(165, 23);
+            this.button4.Size = new System.Drawing.Size(165, 22);
             this.button4.TabIndex = 8;
             this.button4.Text = "Zielordner auswählen";
             this.button4.UseVisualStyleBackColor = true;
@@ -153,25 +161,25 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(21, 276);
+            this.checkBox3.Location = new System.Drawing.Point(12, 320);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(110, 17);
+            this.checkBox3.Size = new System.Drawing.Size(113, 17);
             this.checkBox3.TabIndex = 9;
-            this.checkBox3.Text = "In A3 Umwandeln";
+            this.checkBox3.Text = "In A3 konvertieren";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(730, 48);
+            this.textBox3.Location = new System.Drawing.Point(557, 48);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(415, 20);
+            this.textBox3.Size = new System.Drawing.Size(520, 20);
             this.textBox3.TabIndex = 10;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(953, 29);
+            this.label1.Location = new System.Drawing.Point(780, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 11;
@@ -186,9 +194,9 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(730, 98);
+            this.listBox1.Location = new System.Drawing.Point(557, 83);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(415, 147);
+            this.listBox1.Size = new System.Drawing.Size(520, 134);
             this.listBox1.TabIndex = 13;
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
@@ -196,11 +204,46 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1083, 83);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 27);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1083, 126);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(21, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 15;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1063, 330);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "V 0.1.1";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 493);
+            this.ClientSize = new System.Drawing.Size(1118, 352);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
@@ -215,9 +258,12 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "BsCampusZeugnisKonverter";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,6 +289,9 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
@@ -89,78 +90,86 @@ namespace Zeugnisformatierung
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-
-            string sourcefile = textBox1.Text;
-            XPdfForm f = XPdfForm.FromFile(sourcefile);
-            progressBar1.Maximum = f.PageCount + 1;
-            progressBar1.Value = 0;
-            double pageHeight = f.Size.Height;
-            double pageWidth = f.Size.Width;
-
-            PdfDocument output = new PdfDocument();
-            for (int i = 0; i < f.PageCount; i++)
+            string[] files = richTextBox1.Text.Split('\n');
+            foreach (string sourcefile in files)
             {
-                if (checkBox1.Checked && i == 0)
+                if (File.Exists(sourcefile))
                 {
-                    continue;
-                }
+                    XPdfForm f = XPdfForm.FromFile(sourcefile);
+                    progressBar1.Maximum = f.PageCount + 1;
+                    progressBar1.Value = 0;
+                    double pageHeight = f.Size.Height;
+                    double pageWidth = f.Size.Width;
 
-                
-
-                PdfPage p = output.AddPage();
-                if (checkBox3.Checked)
-                {
-                    p.Width = pageWidth*2;//f.PixelWidth;
-                }
-                else
-                {
-                    p.Width = pageWidth;//f.PixelWidth;
-                }
-            
-                p.Height = pageHeight;// f.PixelHeight;
-
-                //  if (output.PageCount % 2 == 0) p.TrimMargins.Top = Convert.ToInt16(textBox2.Text);
-
-                f.PageIndex = i;
-
-                XGraphics g = XGraphics.FromPdfPage(p);
-                g.DrawImage(f, 0, 0);
-                if (checkBox3.Checked && f.PageCount > i+1)
-                {
-                    f.PageIndex = i + 1;
-                    g.DrawImage(f, p.Width / 2, Convert.ToDouble(textBox2.Text));
-                    i++;
-                    p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
-                }
-                else
-                {
-
-                    if (output.PageCount % 2 == 0 && checkBox2.Checked)
+                    PdfDocument output = new PdfDocument();
+                    for (int i = 0; i < f.PageCount; i++)
                     {
+                        if (checkBox1.Checked && i == 0)
+                        {
+                            continue;
+                        }
 
-                        p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
+
+
+                        PdfPage p = output.AddPage();
+                        if (checkBox3.Checked)
+                        {
+                            p.Width = pageWidth * 2;//f.PixelWidth;
+                        }
+                        else
+                        {
+                            p.Width = pageWidth;//f.PixelWidth;
+                        }
+
+                        p.Height = pageHeight;// f.PixelHeight;
+
+                        //  if (output.PageCount % 2 == 0) p.TrimMargins.Top = Convert.ToInt16(textBox2.Text);
+
+                        f.PageIndex = i;
+
+                        XGraphics g = XGraphics.FromPdfPage(p);
+                        g.DrawImage(f, 0, 0);
+                        if (checkBox3.Checked && f.PageCount > i + 1)
+                        {
+                            f.PageIndex = i + 1;
+                            g.DrawImage(f, p.Width / 2, Convert.ToDouble(textBox2.Text));
+                            i++;
+                            p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
+                        }
+                        else
+                        {
+
+                            if (output.PageCount % 2 == 0 && checkBox2.Checked)
+                            {
+
+                                p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
+
+                            }
+                            else
+                            {
+                                p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
+                            }
+                        }
+                        // Cut if it is not a cover
+                        progressBar1.Value = i;
+                        progressBar1.Value = 0;
 
                     }
-                    else
+
+                    string newfilename = Path.GetFileName(sourcefile);
+
+
+                    string filename = textBox3.Text + "//" + newfilename;
+
+                    try
                     {
-                        p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
+                        output.Save(filename);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
-                // Cut if it is not a cover
-                progressBar1.Value = i;
-            }
-
-           string newfilename = Path.GetFileName(sourcefile);
-       
-
-            string filename = textBox3.Text + "//" + newfilename ;
-
-            try { 
-            output.Save(filename);
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -198,6 +207,61 @@ namespace Zeugnisformatierung
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(listBox1.SelectedItem.ToString());
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if(printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in listBox1.SelectedItems)
+                {
+                    
+                    FileInfo fileInfo = new FileInfo(item.ToString());
+
+                    if (!fileInfo.Exists)
+                    {
+                        throw new FileNotFoundException();
+                    }
+
+                    var printProcess = new Process();
+                    printProcess.StartInfo.FileName = item.ToString();
+                    printProcess.StartInfo.UseShellExecute = true;
+                    printProcess.StartInfo.Verb = "print";
+                    printProcess.Start();
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            textBox2.Text = Properties.Settings.Default.Rand;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Rand = textBox2.Text;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            foreach(string item in listBox1.SelectedItems)
+            {
+               {
+                    try
+                    {
+                        File.Delete(item);
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show("Fehler beim löschen von: " + item);
+                    }
+                }
+            }
+            updateFileList();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
