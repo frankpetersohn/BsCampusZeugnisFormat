@@ -108,7 +108,10 @@ namespace Zeugnisformatierung
                         {
                             continue;
                         }
-
+                        if(checkBox7.Checked && (i+1) % 2 != 0)
+                        {
+                            continue;
+                        }
 
 
                         PdfPage p = output.AddPage();
@@ -150,12 +153,30 @@ namespace Zeugnisformatierung
                             p.MediaBox = new PdfRectangle(new XRect(p.Width/2, 1, p.Width, p.Height));
                             continue;
                         }
+                       
                         else
                         {
                            if ((output.PageCount % 2 == 0 && checkBox2.Checked) || checkBox4.Checked)
                             {
 
-                                p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
+                                if (checkBox6.Checked)
+                                {
+                                    if (output.PageCount == 1)
+                                    {
+                                        p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
+                                    }else
+                                    {
+                                        p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox4.Text), p.Width, p.Height));
+                                    }
+                                }else
+                                {
+                                    p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
+                                }
+                               
+
+
+
+
 
                             }
                             else
@@ -163,6 +184,11 @@ namespace Zeugnisformatierung
                                 p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
                             }
                         }
+                       
+
+
+
+
                         // Cut if it is not a cover
                         progressBar1.Value = i;
                         progressBar1.Value = 0;

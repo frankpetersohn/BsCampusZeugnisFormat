@@ -53,11 +53,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -97,14 +102,14 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(557, 223);
+            this.progressBar1.Location = new System.Drawing.Point(584, 223);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(520, 23);
             this.progressBar1.TabIndex = 4;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(552, 260);
+            this.button3.Location = new System.Drawing.Point(579, 260);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(170, 46);
             this.button3.TabIndex = 5;
@@ -119,7 +124,7 @@
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 244);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(196, 96);
+            this.groupBox1.Size = new System.Drawing.Size(196, 90);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Randeinstellung";
@@ -168,7 +173,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(557, 15);
+            this.button4.Location = new System.Drawing.Point(584, 15);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(165, 22);
             this.button4.TabIndex = 8;
@@ -189,7 +194,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(557, 48);
+            this.textBox3.Location = new System.Drawing.Point(584, 48);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(520, 20);
             this.textBox3.TabIndex = 10;
@@ -198,7 +203,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(780, 24);
+            this.label1.Location = new System.Drawing.Point(807, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 11;
@@ -213,7 +218,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(557, 83);
+            this.listBox1.Location = new System.Drawing.Point(584, 83);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(520, 134);
             this.listBox1.TabIndex = 13;
@@ -226,7 +231,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1083, 83);
+            this.pictureBox1.Location = new System.Drawing.Point(1110, 83);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(21, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -237,7 +242,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1083, 126);
+            this.pictureBox2.Location = new System.Drawing.Point(1110, 126);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(21, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -248,17 +253,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1063, 330);
+            this.label2.Location = new System.Drawing.Point(1090, 330);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 16;
-            this.label2.Text = "V 0.1.1";
+            this.label2.Text = "V 2023-01";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(6, 45);
+            this.checkBox5.Location = new System.Drawing.Point(6, 37);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(156, 17);
             this.checkBox5.TabIndex = 17;
@@ -270,18 +275,59 @@
             // 
             this.groupBox2.Controls.Add(this.checkBox5);
             this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Location = new System.Drawing.Point(246, 244);
+            this.groupBox2.Location = new System.Drawing.Point(214, 247);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.Size = new System.Drawing.Size(169, 80);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "A3 Konvertierung";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.checkBox6);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.checkBox7);
+            this.groupBox3.Location = new System.Drawing.Point(392, 247);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(162, 93);
+            this.groupBox3.TabIndex = 19;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "LUSD Seitenausgleich";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(6, 19);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(148, 17);
+            this.checkBox7.TabIndex = 9;
+            this.checkBox7.Text = "Ungrade Seiten entfernen";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(28, 62);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(47, 20);
+            this.textBox4.TabIndex = 10;
+            this.textBox4.Text = "50";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(6, 39);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(151, 17);
+            this.checkBox6.TabIndex = 12;
+            this.checkBox6.Text = "Rand ab der zweiten Seite";
+            this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 362);
+            this.ClientSize = new System.Drawing.Size(1154, 349);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
@@ -307,6 +353,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,6 +386,10 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }
 
