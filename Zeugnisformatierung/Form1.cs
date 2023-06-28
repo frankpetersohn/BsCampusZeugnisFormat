@@ -104,7 +104,7 @@ namespace Zeugnisformatierung
                     PdfDocument output = new PdfDocument();
                     for (int i = 0; i < f.PageCount; i++)
                     {
-                        if (checkBox1.Checked && i == 0)
+                        if (checkBox1.Checked && i == 0)//erste Seite entfernen
                         {
                             continue;
                         }
@@ -112,7 +112,7 @@ namespace Zeugnisformatierung
 
 
                         PdfPage p = output.AddPage();
-                        if (checkBox3.Checked)
+                        if (checkBox3.Checked || checkBox5.Checked)//in A3 konvertieren
                         {
                             p.Width = pageWidth * 2;//f.PixelWidth;
                         }
@@ -129,17 +129,30 @@ namespace Zeugnisformatierung
 
                         XGraphics g = XGraphics.FromPdfPage(p);
                         g.DrawImage(f, 0, 0);
+
+                        
+
+
+
                         if (checkBox3.Checked && f.PageCount > i + 1)
                         {
-                            f.PageIndex = i + 1;
+                            f.PageIndex = i + 1;                                                  
                             g.DrawImage(f, p.Width / 2, Convert.ToDouble(textBox2.Text));
                             i++;
                             p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
                         }
+                        else if (checkBox5.Checked)
+                        {
+                            f.PageIndex = i ;
+                           
+                            g.DrawImage(f, p.Width, Convert.ToDouble(textBox2.Text));
+                           // i++;
+                            p.MediaBox = new PdfRectangle(new XRect(p.Width/2, 1, p.Width, p.Height));
+                            continue;
+                        }
                         else
                         {
-
-                            if (output.PageCount % 2 == 0 && checkBox2.Checked)
+                           if ((output.PageCount % 2 == 0 && checkBox2.Checked) || checkBox4.Checked)
                             {
 
                                 p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
@@ -262,6 +275,21 @@ namespace Zeugnisformatierung
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked && checkBox5.Checked) checkBox3.Checked = false;
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked && checkBox5.Checked) checkBox5.Checked = false;
         }
     }
 }
