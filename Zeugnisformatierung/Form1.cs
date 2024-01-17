@@ -108,13 +108,15 @@ namespace Zeugnisformatierung
                         {
                             continue;
                         }
-                        if(checkBox7.Checked && (i+1) % 2 != 0)
+                        if(checkBox7.Checked && (i+1) % 2 != 0)//ungrade Seiten entfernen
                         {
                             continue;
                         }
 
 
                         PdfPage p = output.AddPage();
+                        
+           
                         if (checkBox3.Checked || checkBox5.Checked)//in A3 konvertieren
                         {
                             p.Width = pageWidth * 2;//f.PixelWidth;
@@ -133,18 +135,21 @@ namespace Zeugnisformatierung
                         XGraphics g = XGraphics.FromPdfPage(p);
                         g.DrawImage(f, 0, 0);
 
-                        
 
 
+                        XFont font = new XFont("Verdana", 16, XFontStyle.Bold);
 
-                        if (checkBox3.Checked && f.PageCount > i + 1)
+                        if (checkBox3.Checked && f.PageCount > i + 1) //in A3 konvertieren
                         {
+                            if (checkBox8.Checked)
+                            { g.DrawString(textBox5.Text, font, XBrushes.Black, new XRect(0, 0, p.Width, p.Height), XStringFormat.Center);
+                                    }
                             f.PageIndex = i + 1;                                                  
                             g.DrawImage(f, p.Width / 2, Convert.ToDouble(textBox2.Text));
                             i++;
                             p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
                         }
-                        else if (checkBox5.Checked)
+                        else if (checkBox5.Checked) //einseitig in A3 rechtsbündig
                         {
                             f.PageIndex = i ;
                            
@@ -156,20 +161,46 @@ namespace Zeugnisformatierung
                        
                         else
                         {
-                           if ((output.PageCount % 2 == 0 && checkBox2.Checked) || checkBox4.Checked)
+                           
+                            if ((output.PageCount % 2 == 0 && checkBox2.Checked) || checkBox4.Checked)
                             {
 
-                                if (checkBox6.Checked)
+                                if (checkBox6.Checked)//Rand ab der zweiten Seite
                                 {
                                     if (output.PageCount == 1)
                                     {
                                         p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
-                                    }else
+                                    }
+                                    else
                                     {
+                                        if (checkBox8.Checked)//Kopfzeile
+                                        {
+                                            g.DrawString(textBox5.Text, font, XBrushes.Black, new XRect(1, 1, p.Width, p.Height), XStringFormat.TopCenter);
+                                        }
+
                                         p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox4.Text), p.Width, p.Height));
                                     }
-                                }else
+                                }
+                                else
                                 {
+
+                                    if (checkBox8.Checked)//Kopfzeile
+                                    {
+                                        if (p.Width > 700)
+                                        {
+                                        XRect linkeKopfzeile = new XRect(0, 0, p.Width / 2, p.Height);
+                                        XRect rechteKopfzeile = new XRect(p.Width / 2, 0, p.Width / 2, p.Height);
+                                        g.DrawString(textBox5.Text, font, XBrushes.Black, linkeKopfzeile, XStringFormat.TopCenter);
+                                        g.DrawString(textBox5.Text, font, XBrushes.Black, rechteKopfzeile, XStringFormat.TopCenter);
+                                        }
+                                        else
+                                        {
+                                            XRect posKopfzeile = new XRect(0, 0, p.Width, p.Height);
+                                            g.DrawString(textBox5.Text, font, XBrushes.Black, posKopfzeile, XStringFormat.TopCenter);
+                                        }
+
+                                    }
+
                                     p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
                                 }
                                

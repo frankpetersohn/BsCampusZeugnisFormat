@@ -54,9 +54,11 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -109,7 +111,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(579, 260);
+            this.button3.Location = new System.Drawing.Point(934, 270);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(170, 46);
             this.button3.TabIndex = 5;
@@ -257,7 +259,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 16;
-            this.label2.Text = "V 2023-01";
+            this.label2.Text = "V 2024-01";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // checkBox5
@@ -294,24 +296,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "LUSD Seitenausgleich";
             // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(6, 19);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(148, 17);
-            this.checkBox7.TabIndex = 9;
-            this.checkBox7.Text = "Ungrade Seiten entfernen";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(28, 62);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(47, 20);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.Text = "50";
-            // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
@@ -322,11 +306,49 @@
             this.checkBox6.Text = "Rand ab der zweiten Seite";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(28, 62);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(47, 20);
+            this.textBox4.TabIndex = 10;
+            this.textBox4.Text = "50";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(6, 19);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(148, 17);
+            this.checkBox7.TabIndex = 9;
+            this.checkBox7.Text = "Ungrade Seiten entfernen";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(584, 266);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(124, 17);
+            this.checkBox8.TabIndex = 20;
+            this.checkBox8.Text = "Kopfzeile hinzufügen";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(584, 281);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(325, 20);
+            this.textBox5.TabIndex = 21;
+            this.textBox5.Text = "Abschlusszeugnis der Berufsschule";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1154, 349);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.checkBox8);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
@@ -390,6 +412,8 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.CheckBox checkBox8;
     }
 }
 
