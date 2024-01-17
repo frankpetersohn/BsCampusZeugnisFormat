@@ -23,17 +23,17 @@ namespace Zeugnisformatierung
         {
             InitializeComponent();
         }
-
+        XFont font = new XFont("Verdana", 16, XFontStyle.Bold);
         private void button1_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBox1.Text = openFileDialog1.FileName;
                 string[] files = openFileDialog1.FileNames;
                 richTextBox1.Text = "";
                 foreach (string file in files)
                 {
-                    richTextBox1.Text += file+"\n";
+                    richTextBox1.Text += file + "\n";
                 }
             }
         }
@@ -49,18 +49,18 @@ namespace Zeugnisformatierung
 
             // Show consecutive pages facing. Requires Acrobat 5 or higher.
             outputDocument.PageLayout = PdfPageLayout.TwoColumnLeft;
-/*
-            XFont font = new XFont("Verdana", 10, XFontStyle.Bold);
-            XStringFormat format = new XStringFormat();
-            format.Alignment = XStringAlignment.Center;
-            format.LineAlignment = XLineAlignment.Far;
-            XGraphics gfx;
-          XRect box; 
-            int count = Math.Max(inputDocument1.PageCount, inputDocument2.PageCount);*/ 
+            /*
+                        XFont font = new XFont("Verdana", 10, XFontStyle.Bold);
+                        XStringFormat format = new XStringFormat();
+                        format.Alignment = XStringAlignment.Center;
+                        format.LineAlignment = XLineAlignment.Far;
+                        XGraphics gfx;
+                      XRect box; 
+                        int count = Math.Max(inputDocument1.PageCount, inputDocument2.PageCount);*/
             for (int idx = 0; idx < inputDocument.PageCount; idx++)
             {
 
-              
+
                 // Get page from 1st document
                 PdfPage page = inputDocument.PageCount > idx ?
                   inputDocument.Pages[idx] : new PdfPage();
@@ -68,8 +68,8 @@ namespace Zeugnisformatierung
                 newPage.TrimMargins.Top = 30;
                 inputDocument.Pages[idx].TrimMargins.Top = 30;
                 newPage = inputDocument.Pages[idx];
-                
-                if(checkBox1.Checked && idx == 0)
+
+                if (checkBox1.Checked && idx == 0)
                 {
                     continue;
                 }
@@ -78,7 +78,7 @@ namespace Zeugnisformatierung
                 //outputDocument.AddPage(page);
                 outputDocument.AddPage(newPage);
                 progressBar1.Value = idx;
-              
+
             }
 
             // Save the document...
@@ -108,15 +108,15 @@ namespace Zeugnisformatierung
                         {
                             continue;
                         }
-                        if(checkBox7.Checked && (i+1) % 2 != 0)//ungrade Seiten entfernen
+                        if (checkBox7.Checked && (i + 1) % 2 != 0)//ungrade Seiten entfernen
                         {
                             continue;
                         }
 
 
                         PdfPage p = output.AddPage();
-                        
-           
+
+
                         if (checkBox3.Checked || checkBox5.Checked)//in A3 konvertieren
                         {
                             p.Width = pageWidth * 2;//f.PixelWidth;
@@ -135,33 +135,28 @@ namespace Zeugnisformatierung
                         XGraphics g = XGraphics.FromPdfPage(p);
                         g.DrawImage(f, 0, 0);
 
-
-
-                        XFont font = new XFont("Verdana", 16, XFontStyle.Bold);
+                       
 
                         if (checkBox3.Checked && f.PageCount > i + 1) //in A3 konvertieren
                         {
-                            if (checkBox8.Checked)
-                            { g.DrawString(textBox5.Text, font, XBrushes.Black, new XRect(0, 0, p.Width, p.Height), XStringFormat.Center);
-                                    }
-                            f.PageIndex = i + 1;                                                  
+                            f.PageIndex = i + 1;
                             g.DrawImage(f, p.Width / 2, Convert.ToDouble(textBox2.Text));
                             i++;
                             p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
                         }
                         else if (checkBox5.Checked) //einseitig in A3 rechtsbündig
                         {
-                            f.PageIndex = i ;
-                           
+                            f.PageIndex = i;
+
                             g.DrawImage(f, p.Width, Convert.ToDouble(textBox2.Text));
-                           // i++;
-                            p.MediaBox = new PdfRectangle(new XRect(p.Width/2, 1, p.Width, p.Height));
+                            // i++;
+                            p.MediaBox = new PdfRectangle(new XRect(p.Width / 2, 1, p.Width, p.Height));
                             continue;
                         }
-                       
+
                         else
                         {
-                           
+
                             if ((output.PageCount % 2 == 0 && checkBox2.Checked) || checkBox4.Checked)
                             {
 
@@ -173,11 +168,6 @@ namespace Zeugnisformatierung
                                     }
                                     else
                                     {
-                                        if (checkBox8.Checked)//Kopfzeile
-                                        {
-                                            g.DrawString(textBox5.Text, font, XBrushes.Black, new XRect(1, 1, p.Width, p.Height), XStringFormat.TopCenter);
-                                        }
-
                                         p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox4.Text), p.Width, p.Height));
                                     }
                                 }
@@ -188,10 +178,10 @@ namespace Zeugnisformatierung
                                     {
                                         if (p.Width > 700)
                                         {
-                                        XRect linkeKopfzeile = new XRect(0, 0, p.Width / 2, p.Height);
-                                        XRect rechteKopfzeile = new XRect(p.Width / 2, 0, p.Width / 2, p.Height);
-                                        g.DrawString(textBox5.Text, font, XBrushes.Black, linkeKopfzeile, XStringFormat.TopCenter);
-                                        g.DrawString(textBox5.Text, font, XBrushes.Black, rechteKopfzeile, XStringFormat.TopCenter);
+                                            XRect linkeKopfzeile = new XRect(0, 0, p.Width / 2, p.Height);
+                                            XRect rechteKopfzeile = new XRect(p.Width / 2, 0, p.Width / 2, p.Height);
+                                            g.DrawString(textBox5.Text, font, XBrushes.Black, linkeKopfzeile, XStringFormat.TopCenter);
+                                            g.DrawString(textBox5.Text, font, XBrushes.Black, rechteKopfzeile, XStringFormat.TopCenter);
                                         }
                                         else
                                         {
@@ -203,11 +193,6 @@ namespace Zeugnisformatierung
 
                                     p.MediaBox = new PdfRectangle(new XRect(1, Convert.ToDouble(textBox2.Text), p.Width, p.Height));
                                 }
-                               
-
-
-
-
 
                             }
                             else
@@ -215,9 +200,6 @@ namespace Zeugnisformatierung
                                 p.MediaBox = new PdfRectangle(new XRect(1, 1, p.Width, p.Height));
                             }
                         }
-                       
-
-
 
 
                         // Cut if it is not a cover
@@ -245,9 +227,9 @@ namespace Zeugnisformatierung
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if(folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-               textBox3.Text = folderBrowserDialog1.SelectedPath;
+                textBox3.Text = folderBrowserDialog1.SelectedPath;
             }
         }
 
@@ -271,7 +253,7 @@ namespace Zeugnisformatierung
         private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
         {
             updateFileList();
-           
+
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
@@ -281,11 +263,11 @@ namespace Zeugnisformatierung
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if(printDialog1.ShowDialog() == DialogResult.OK)
+            if (printDialog1.ShowDialog() == DialogResult.OK)
             {
                 foreach (var item in listBox1.SelectedItems)
                 {
-                    
+
                     FileInfo fileInfo = new FileInfo(item.ToString());
 
                     if (!fileInfo.Exists)
@@ -305,6 +287,7 @@ namespace Zeugnisformatierung
         private void Form1_Load(object sender, EventArgs e)
         {
             textBox2.Text = Properties.Settings.Default.Rand;
+            fontDialog1.Font = new Font("Verdana", 16, FontStyle.Bold);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -314,14 +297,15 @@ namespace Zeugnisformatierung
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            foreach(string item in listBox1.SelectedItems)
+            foreach (string item in listBox1.SelectedItems)
             {
-               {
+                {
                     try
                     {
                         File.Delete(item);
                     }
-                    catch (Exception ex) {
+                    catch (Exception ex)
+                    {
                         MessageBox.Show("Fehler beim löschen von: " + item);
                     }
                 }
@@ -347,6 +331,20 @@ namespace Zeugnisformatierung
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox3.Checked && checkBox5.Checked) checkBox5.Checked = false;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if(fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                XFontStyle style = XFontStyle.Regular;
+                if (fontDialog1.Font.Bold) style |= XFontStyle.Bold;
+                if (fontDialog1.Font.Italic) style |= XFontStyle.Italic;
+                if (fontDialog1.Font.Underline) style |= XFontStyle.Underline;
+                if (fontDialog1.Font.Strikeout) style |= XFontStyle.Strikeout;
+
+                font = new XFont(fontDialog1.Font.FontFamily, fontDialog1.Font.Size, style);
+            }
         }
     }
 }

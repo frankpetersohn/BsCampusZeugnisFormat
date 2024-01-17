@@ -59,6 +59,8 @@
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -342,11 +344,22 @@
             this.textBox5.TabIndex = 21;
             this.textBox5.Text = "Abschlusszeugnis der Berufsschule";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(791, 257);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 23);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Schrift ändern";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1154, 349);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.checkBox8);
             this.Controls.Add(this.groupBox3);
@@ -414,6 +427,8 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
